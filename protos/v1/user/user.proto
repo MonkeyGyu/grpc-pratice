@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+
+package grpcapi;
+
+//현재 프로젝트 내에 grpc 관련파일이 임포트퇼 위치
+option go_package = "github.com/DonggyuLim/grpc-pratice/protos/v1/user";
+
+service User{
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc ListUser(ListUserRequest) returns (ListUserResponse);
+}
+
+message UserMeesage{
+    string user_id = 1;
+    string name = 2;
+    string phone_number = 3;
+    int32 age = 4;
+}
+
+message GetUserRequest{
+    string user_id = 1;
+}
+
+message GetUserResponse{
+    UserMeesage user_message = 1;
+}
+
+message ListUserRequest{
+
+}
+
+message ListUserResponse{
+    repeated UserMeesage user_messages = 1;
+}
